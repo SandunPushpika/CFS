@@ -122,7 +122,8 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-    ]
+    ],
+    'EXCEPTION_HANDLER': 'app.utils.exception_handler.custom_exception_handler'
 }
 
 AUTH_USER_MODEL = 'authentication.User'
