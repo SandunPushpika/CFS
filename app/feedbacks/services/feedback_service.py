@@ -14,7 +14,7 @@ class FeedbackService:
         *,
         user_id: int,
         course_id: int,
-        question_id: int,
+        answers: list,
         feedback_text: str,
         rating: int
     ) -> Feedback:
@@ -31,15 +31,10 @@ class FeedbackService:
         except Course.DoesNotExist:
             raise ValueError("Invalid course")
 
-        try:
-            question = Question.objects.get(id=question_id)
-        except Question.DoesNotExist:
-            raise ValueError("Invalid question")
-
         feedback = Feedback.objects.create(
             user=user,
             course=course,
-            question=question,
+            answers=answers,
             feedback_text=feedback_text,
             rating=rating
         )
@@ -100,7 +95,7 @@ class FeedbackService:
     ):
 
         qs = Feedback.objects.select_related(
-            "user", "course", "question"
+            "user", "course"
         )
 
         if year:

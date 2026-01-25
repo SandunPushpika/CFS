@@ -23,7 +23,18 @@ Content-Type: application/json
 {
   "user_id": 1,
   "course_id": 1,
-  "question_id": 1,
+  "answers": [
+    {
+      "question_id": 1,
+      "question_text": "How would you rate the course content?",
+      "rating": 5
+    },
+    {
+      "question_id": 2,
+      "question_text": "Was the instructor knowledgeable?",
+      "rating": 4
+    }
+  ],
   "feedback_text": "This course was very informative and well-structured.",
   "rating": 4
 }
@@ -36,7 +47,18 @@ curl -X POST http://localhost:8000/api/feedbacks/ \
   -d '{
     "user_id": 1,
     "course_id": 1,
-    "question_id": 1,
+    "answers": [
+      {
+        "question_id": 1,
+        "question_text": "How would you rate the course content?",
+        "rating": 5
+      },
+      {
+        "question_id": 2,
+        "question_text": "Was the instructor knowledgeable?",
+        "rating": 4
+      }
+    ],
     "feedback_text": "This course was very informative and well-structured.",
     "rating": 4
   }'
@@ -52,7 +74,6 @@ curl -X POST http://localhost:8000/api/feedbacks/ \
     "user_name": "john_doe",
     "course_title": "Introduction to Python",
     "course_code": "CS101",
-    "question_text": "Was the course content relevant?",
     "feedback_text": "This course was very informative and well-structured.",
     "rating": 4,
     "created_at": "2026-01-24T10:30:00Z"
@@ -101,7 +122,6 @@ curl -X PUT http://localhost:8000/api/feedbacks/1/ \
     "user_name": "john_doe",
     "course_title": "Introduction to Python",
     "course_code": "CS101",
-    "question_text": "Was the course content relevant?",
     "feedback_text": "Updated feedback text",
     "rating": 5,
     "created_at": "2026-01-24T10:30:00Z"
@@ -163,25 +183,45 @@ curl -X GET "http://localhost:8000/api/feedbacks/list/?year=2026&semester=1&degr
   "message": null,
   "data": [
     {
-      "id": 1,
-      "user_name": "john_doe",
-      "course_title": "Introduction to Python",
-      "course_code": "CS101",
-      "question_text": "Was the course content relevant?",
-      "feedback_text": "This course was very informative and well-structured.",
-      "rating": 4,
-      "created_at": "2026-01-24T10:30:00Z"
-    },
-    {
-      "id": 2,
-      "user_name": "jane_smith",
-      "course_title": "Introduction to Python",
-      "course_code": "CS101",
-      "question_text": "Was the course content relevant?",
-      "feedback_text": "Excellent course with great instructor.",
-      "rating": 5,
-      "created_at": "2026-01-24T11:15:00Z"
-    }
+            "id": 4,
+            "course_title": "Introduction to Computer Science",
+            "course_code": "CS101",
+            "feedback_text": "This course was very informative and well-structured.",
+            "rating": 4,
+            "answers": [
+                {
+                    "rating": 5,
+                    "question_id": 1,
+                    "question_text": "How would you rate the course content?"
+                },
+                {
+                    "rating": 4,
+                    "question_id": 2,
+                    "question_text": "Was the instructor knowledgeable?"
+                }
+            ],
+            "created_at": "2026-01-25T05:29:11.153169Z"
+        },
+        {
+            "id": 5,
+            "course_title": "Introduction to SQL",
+            "course_code": "CS104",
+            "feedback_text": "This course was very informative and well-structured.",
+            "rating": 4,
+            "answers": [
+                {
+                    "rating": 4,
+                    "question_id": 1,
+                    "question_text": "How would you rate the course content?"
+                },
+                {
+                    "rating": 2,
+                    "question_id": 2,
+                    "question_text": "Was the instructor knowledgeable?"
+                }
+            ],
+            "created_at": "2026-01-25T05:29:41.233640Z"
+        }
   ]
 }
 ```

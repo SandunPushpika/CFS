@@ -21,7 +21,6 @@ def feedback_crud_api(request, feedback_id=None):
     """
     POST   -> Create feedback
     PUT    -> Update feedback
-    DELETE -> Delete feedback
     """
 
     if request.method == 'PUT':
