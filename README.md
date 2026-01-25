@@ -11,6 +11,11 @@ python -m venv .venv
 ```
 pip install -r requirements.txt
 ```
+3. Create database cfs in MysqlClient
+```
+mysql -u root
+create database cfs;
+```
 4. Run database migrations
 ```
 cd project-root-directory
