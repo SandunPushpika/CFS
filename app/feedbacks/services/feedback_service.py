@@ -44,7 +44,7 @@ class FeedbackService:
     @staticmethod
     def get_all_feedbacks():
         return Feedback.objects.select_related(
-            "user", "course", "question"
+            "user", "course"
         ).all()
 
     @staticmethod
