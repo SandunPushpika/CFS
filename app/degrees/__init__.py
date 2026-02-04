@@ -1,0 +1,3 @@
+"""
+Degrees app package initializer.
+"""
