@@ -2,6 +2,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from app.degrees.serializers import DegreeSerializer
 from app.utils.http_responses import success_response, error_response
+from app.utils.permisions import IsAdmin
 
 from app.degrees.services.degree_service import (
     get_all_degrees,
@@ -10,7 +11,7 @@ from app.degrees.services.degree_service import (
 
 
 @api_view(['POST', 'DELETE'])
-@permission_classes([AllowAny])
+@permission_classes([IsAdmin])
 def create_degree_api(request, degree_id=None):
     if request.method == 'DELETE':
         return delete_degree_api(degree_id)

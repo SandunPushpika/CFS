@@ -2,6 +2,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework import status
 from rest_framework.response import Response
+from app.utils.permisions import IsAdmin
 
 from app.feedbacks.services.feedback_service import FeedbackService
 from app.feedbacks.serializers import (
@@ -56,7 +57,7 @@ def update_feedback_api(request, feedback_id):
     return success_response(serializer.data, "Feedback updated successfully")
 
 @api_view(['GET'])
-@permission_classes([AllowAny])
+@permission_classes([IsAdmin])
 def list_feedbacks_api(request):
     """
     Query params:
@@ -86,7 +87,7 @@ def list_feedbacks_api(request):
 
 
 @api_view(['GET'])
-@permission_classes([AllowAny])
+@permission_classes([IsAdmin])
 def feedback_stats_api(request):
     """
     Query params:
@@ -145,7 +146,7 @@ def question_api(request):
     )
 
 @api_view(['DELETE'])
-@permission_classes([AllowAny])
+@permission_classes([IsAdmin])
 def delete_question_api(request, question_id):
     """
     DELETE -> Delete question
