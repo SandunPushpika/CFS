@@ -7,7 +7,7 @@ from app.utils.http_responses import success_response, error_response
 from app.courses.services.course_service import get_all_courses, get_courses_by_degree_and_semester, update_course, delete_course
 
 @api_view(['POST', 'PUT', 'DELETE'])
-@permission_classes([AllowAny])
+@permission_classes([IsAdmin])
 def create_course(request, course_id=None):
     if(request.method == 'PUT'):
         return update_course_api(request)
